@@ -12,6 +12,7 @@ class AnotherStepper extends StatelessWidget {
   const AnotherStepper({
     Key? key,
     required this.stepperList,
+    this.trailingWidgets = const [],
     this.gap = 40,
     this.activeIndex = 0,
     required this.stepperDirection,
@@ -35,6 +36,12 @@ class AnotherStepper extends StatelessWidget {
 
   /// Stepper [List] of type [StepperData] to inflate stepper with data
   final List<StepperData> stepperList;
+
+  /// To add trailing widgets to the stepper.
+  /// Length should be equal to the length of [stepperList]
+  ///
+  /// It is used in [Axis.vertical] stepper only.
+  final List<Widget> trailingWidgets;
 
   /// Gap between the items in the vertical stepper, Default = 40
   /// Recommended to keep it greater than 20.
@@ -77,7 +84,8 @@ class AnotherStepper extends StatelessWidget {
     var caa = stepperDirection == Axis.horizontal
         ? CrossAxisAlignment.end
         : CrossAxisAlignment.start;
-    if (inverted) { // invert Alignment
+    if (inverted) {
+      // invert Alignment
       caa = caa == CrossAxisAlignment.end
           ? CrossAxisAlignment.start
           : CrossAxisAlignment.end;
@@ -113,6 +121,7 @@ class AnotherStepper extends StatelessWidget {
       return VerticalStepperItem(
         index: index,
         item: stepperList[index],
+        trailingWidget: trailingWidgets[index],
         totalLength: stepperList.length,
         gap: gap,
         activeIndex: activeIndex,

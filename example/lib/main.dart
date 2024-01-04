@@ -24,7 +24,8 @@ class _MyAppState extends State<MyApp> {
     ),
     const StepperData(
       title: "On the way",
-      subtitle: "Our delivery executive is on the way to deliver your item",
+      subtitle:
+          "Our delivery executive is on Our delivery executive is on Our delivery executive is on",
     ),
     const StepperData(
       title: "Delivered",
@@ -49,6 +50,28 @@ class _MyAppState extends State<MyApp> {
           padding: const EdgeInsets.only(left: 20),
           child: AnotherStepper(
             stepperList: stepperData,
+            trailingWidgets: const [
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 24,
+              ),
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 24,
+              ),
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 24,
+              ),
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 24,
+              ),
+            ],
             stepperDirection: Axis.vertical,
             dotWidget: Container(
               padding: const EdgeInsets.all(8),
