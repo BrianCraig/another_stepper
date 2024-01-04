@@ -74,21 +74,11 @@ class HorizontalStepperItem extends StatelessWidget {
         );
     return [
       if (item.title != null) ...[
-        SizedBox(
-            child: Text(
-              item.title!,
-              textAlign: TextAlign.center,
-              style: titleTextStyle,
-            )),
+        item.title!,
         const SizedBox(height: 4),
       ],
       if (item.subtitle != null) ...[
-        SizedBox(
-            child: Text(
-              item.subtitle!,
-              textAlign: TextAlign.center,
-              style: subtitleTextStyle,
-            )),
+        item.subtitle!,
         const SizedBox(height: 8),
       ],
       Row(

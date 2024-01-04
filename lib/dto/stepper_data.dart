@@ -1,6 +1,15 @@
-class StepperData {
-  final String? title;
-  final String? subtitle;
+import 'package:flutter/material.dart';
 
-  const StepperData({this.title, this.subtitle});
+class StepperData {
+  final Text? title;
+  final Text? subtitle;
+  final Widget? trailingWidget;
+  final Widget? leadingWidget;
+
+  const StepperData({
+    this.title,
+    this.subtitle,
+    this.leadingWidget,
+    this.trailingWidget,
+  });
 }

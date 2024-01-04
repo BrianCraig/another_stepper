@@ -8,7 +8,6 @@ class VerticalStepperItem extends StatelessWidget {
   const VerticalStepperItem({
     Key? key,
     required this.item,
-    this.trailingWidget = const SizedBox(),
     required this.index,
     required this.totalLength,
     required this.gap,
@@ -24,9 +23,6 @@ class VerticalStepperItem extends StatelessWidget {
 
   /// Stepper item of type [StepperData] to inflate stepper with data
   final StepperData item;
-
-  /// Trailing widget for the stepper [item]
-  final Widget trailingWidget;
 
   /// Index at which the item is present
   final int index;
@@ -80,7 +76,7 @@ class VerticalStepperItem extends StatelessWidget {
             height: gap,
           ),
           index <= activeIndex
-              ? dotWidget ??
+              ? item.leadingWidget ??
                   StepperDot(
                     index: index,
                     totalLength: totalLength,
@@ -88,7 +84,7 @@ class VerticalStepperItem extends StatelessWidget {
                   )
               : ColorFiltered(
                   colorFilter: Utils.getGreyScaleColorFilter(),
-                  child: dotWidget ??
+                  child: item.leadingWidget ??
                       StepperDot(
                         index: index,
                         totalLength: totalLength,
@@ -115,29 +111,18 @@ class VerticalStepperItem extends StatelessWidget {
                   : CrossAxisAlignment.start,
               children: [
                 if (item.title != null) ...[
-                  Text(
-                    item.title!,
-                    textAlign: TextAlign.start,
-                    style: titleTextStyle,
-                  ),
+                  item.title!,
                 ],
                 if (item.subtitle != null) ...[
                   const SizedBox(height: 8),
                   SizedBox(
                     width: 230,
-                    child: Text(
-                      item.subtitle!,
-                      textAlign: TextAlign.start,
-                      style: subtitleTextStyle,
-                      softWrap: true,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                    child: item.subtitle!,
                   ),
                 ],
               ],
             ),
-            trailingWidget,
+            item.trailingWidget ?? const SizedBox(),
           ],
         ),
       ),

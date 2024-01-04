@@ -14,22 +14,52 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<StepperData> stepperData = [
-    const StepperData(
-      title: "Order Placed",
-      subtitle: "Your order has been placed",
+    StepperData(
+      title: const Text("Order Placeded"),
+      subtitle: const Text("Your order has been placed"),
+      leadingWidget: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: const BoxDecoration(
+            color: Colors.green,
+            borderRadius: BorderRadius.all(Radius.circular(30))),
+        child: const Icon(Icons.fastfood, color: Colors.white),
+      ),
     ),
-    const StepperData(
-      title: "Preparing",
-      subtitle: "Your order is being prepared",
+    StepperData(
+      title: const Text("Preparing"),
+      subtitle: const Text("Your order is being prepared"),
+      leadingWidget: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: const BoxDecoration(
+            color: Colors.green,
+            borderRadius: BorderRadius.all(Radius.circular(30))),
+        child: const Icon(Icons.fastfood, color: Colors.white),
+      ),
     ),
-    const StepperData(
-      title: "On the way",
-      subtitle:
-          "Our delivery executive is on Our delivery executive is on Our delivery executive is on",
+    StepperData(
+      title: const Text("On the way"),
+      subtitle: const Text(
+          "Our delivery executive is on Our delivery executive is on Our delivery executive is on"),
+      leadingWidget: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: const BoxDecoration(
+            color: Colors.green,
+            borderRadius: BorderRadius.all(Radius.circular(30))),
+        child: const Icon(Icons.fastfood, color: Colors.white),
+      ),
+      trailingWidget: const Icon(Icons.mouse),
     ),
-    const StepperData(
-      title: "Delivered",
-      subtitle: "Your order was delivered successfully",
+    StepperData(
+      title: const Text("Delivered"),
+      subtitle: const Text("Your order was delivered successfully"),
+      leadingWidget: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: const BoxDecoration(
+            color: Colors.green,
+            borderRadius: BorderRadius.all(Radius.circular(30))),
+        child: const Icon(Icons.access_alarm, color: Colors.white),
+      ),
+      trailingWidget: const Icon(Icons.bluetooth),
     ),
   ];
 
@@ -50,39 +80,10 @@ class _MyAppState extends State<MyApp> {
           padding: const EdgeInsets.only(left: 20),
           child: AnotherStepper(
             stepperList: stepperData,
-            trailingWidgets: const [
-              Icon(
-                Icons.check_circle,
-                color: Colors.green,
-                size: 24,
-              ),
-              Icon(
-                Icons.check_circle,
-                color: Colors.green,
-                size: 24,
-              ),
-              Icon(
-                Icons.check_circle,
-                color: Colors.green,
-                size: 24,
-              ),
-              Icon(
-                Icons.check_circle,
-                color: Colors.green,
-                size: 24,
-              ),
-            ],
             stepperDirection: Axis.vertical,
-            dotWidget: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: const BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.all(Radius.circular(30))),
-              child: const Icon(Icons.fastfood, color: Colors.white),
-            ),
             activeBarColor: Colors.green,
             inActiveBarColor: Colors.grey,
-            activeIndex: 2,
+            activeIndex: 1,
             barThickness: 8,
           ),
         ),
