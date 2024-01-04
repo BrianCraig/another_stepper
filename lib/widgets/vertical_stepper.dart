@@ -5,24 +5,28 @@ import 'package:flutter/material.dart';
 
 class VerticalStepperItem extends StatelessWidget {
   /// Stepper Item to show vertical stepper
-  const VerticalStepperItem(
-      {Key? key,
-      required this.item,
-      required this.index,
-      required this.totalLength,
-      required this.gap,
-      required this.activeIndex,
-      required this.isInverted,
-      required this.activeBarColor,
-      required this.inActiveBarColor,
-      required this.barWidth,
-      required this.dotWidget,
-      required this.titleTextStyle,
-      required this.subtitleTextStyle})
-      : super(key: key);
+  const VerticalStepperItem({
+    Key? key,
+    required this.item,
+    this.trailingWidget = const SizedBox(),
+    required this.index,
+    required this.totalLength,
+    required this.gap,
+    required this.activeIndex,
+    required this.isInverted,
+    required this.activeBarColor,
+    required this.inActiveBarColor,
+    required this.barWidth,
+    required this.dotWidget,
+    required this.titleTextStyle,
+    required this.subtitleTextStyle,
+  }) : super(key: key);
 
   /// Stepper item of type [StepperData] to inflate stepper with data
   final StepperData item;
+
+  /// Trailing widget for the stepper [item]
+  final Widget trailingWidget;
 
   /// Index at which the item is present
   final int index;
@@ -102,25 +106,38 @@ class VerticalStepperItem extends StatelessWidget {
       ),
       const SizedBox(width: 8),
       Expanded(
-        child: Column(
-          crossAxisAlignment:
-              isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            if (item.title != null) ...[
-              Text(
-                item.title!,
-                textAlign: TextAlign.start,
-                style: titleTextStyle,
-              ),
-            ],
-            if (item.subtitle != null) ...[
-              const SizedBox(height: 8),
-              Text(
-                item.subtitle!,
-                textAlign: TextAlign.start,
-                style: subtitleTextStyle,
-              ),
-            ],
+            Column(
+              crossAxisAlignment: isInverted
+                  ? CrossAxisAlignment.end
+                  : CrossAxisAlignment.start,
+              children: [
+                if (item.title != null) ...[
+                  Text(
+                    item.title!,
+                    textAlign: TextAlign.start,
+                    style: titleTextStyle,
+                  ),
+                ],
+                if (item.subtitle != null) ...[
+                  const SizedBox(height: 8),
+                  SizedBox(
+                    width: 230,
+                    child: Text(
+                      item.subtitle!,
+                      textAlign: TextAlign.start,
+                      style: subtitleTextStyle,
+                      softWrap: true,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+            trailingWidget,
           ],
         ),
       ),
